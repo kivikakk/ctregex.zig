@@ -890,6 +890,7 @@ inline fn matchExpr(comptime expr: RegexParser.Expr, comptime options: MatchOpti
 
 pub const MatchOptions = struct {
     encoding: Encoding = .utf8,
+    complete: bool = true,
 };
 
 pub fn MatchResult(comptime regex: []const u8, comptime options: MatchOptions) type {
@@ -939,8 +940,7 @@ pub fn match(comptime regex: []const u8, comptime options: MatchOptions, str: []
             .slice = undefined,
         };
         if (try matchExpr(parsed.root, options, str, &result)) |slice| {
-            // TODO More than just complete matches.
-            if (slice.len != str.len) return null;
+            if (options.complete and slice.len != str.len) return null;
             result.slice = slice;
             return result;
         }
