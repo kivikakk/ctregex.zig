@@ -445,7 +445,7 @@ const RegexParser = struct {
     // special_brackets := '-' | ']'
     // rest_brackets :=  <char>-special_brackets
     fn parseBracketsRule(comptime parser: *RegexParser) ?Brackets.Rule {
-        const special_brackets = .{ '-', ']', '^' };
+        const special_brackets = .{ '-', ']' };
 
         const first_char = if (parser.consumeChar('\\')) block: {
             if (parser.consumeOneOf(special_brackets ++ .{ ' ', '\t', '\\' })) |char| {
