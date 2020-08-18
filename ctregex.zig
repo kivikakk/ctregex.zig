@@ -86,7 +86,7 @@ fn ctIntStr(comptime int: anytype) []const u8 {
 /// brackets ::= '[' '^'? (brackets_rule)+ ']'
 /// brackets_rule ::= brackets_atom | brackets_atom '-' brackets_atom
 /// brackets_atom ::= ('\' special_brackets | '\' | rest_brackets)+
-/// special_brackets ::= '-' | ']' | '^'
+/// special_brackets ::= '-' | ']'
 /// rest_brackets ::=  <char>-special_brackets
 /// special ::= '.' | '[' | ']'| '(' | ')' | '|' | '*' | '+' | '?' | '^' | '{' | '}'
 /// rest_char ::= <char>-special

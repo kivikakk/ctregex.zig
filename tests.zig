@@ -104,3 +104,10 @@ test "regex searching" {
     try testSearch("(abc|αβγ)+", .utf16le, "a lorem ipsum αβγαβγαβγ abcabc", "αβγαβγαβγ");
     try testSearch("(abc|αβγ)+", .codepoint, "a lorem ipsum αβγαβγαβγ abcabc", "αβγαβγαβγ");
 }
+
+test "failing test case" {
+    @setEvalBranchQuota(3000);
+    try testMatch("a*a", .ascii, "aa");
+    try testMatch("a+a", .ascii, "aa");
+    try testMatch("a?a", .ascii, "a");
+}
